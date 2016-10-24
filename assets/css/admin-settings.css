@@ -6,3 +6,7 @@
 .ninja-forms-app .postbox .item-controls {
     display: none;
 }
+
+tr[id='row_ninja_forms[currency_code]'], tr[id='row_ninja_forms[currency_symbol]']{
+    display: none;
+}

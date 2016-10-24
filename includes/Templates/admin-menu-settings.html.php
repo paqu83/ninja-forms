@@ -54,7 +54,11 @@
                                             echo $setting[ 'value' ];
                                             break;
                                         case 'textbox' :
-                                            echo "<input type='text' class='code widefat' name='{$setting['id']}' id='{$setting['id']}' value='{$setting['value']}'>";
+                                            $width = empty($setting['size'])?'widefat':'thin';
+                                            echo "<input type='text' class='code {$width}' name='{$setting['id']}' id='{$setting['id']}' value='{$setting['value']}'";
+                                            echo empty($setting['size'])?"":" size='{$setting['size']}' ";
+                                            echo empty($setting['maxlength'])?"":" maxlength='{$setting['maxlength']}' ";
+                                            echo ">";
                                             break;
                                         case 'checkbox' :
                                             $checked = ( $setting[ 'value' ] ) ? 'checked' : '';

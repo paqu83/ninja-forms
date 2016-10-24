@@ -587,11 +587,31 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
          * Config
          *
          * @param $file_name
+         * @param string $transform 
          * @return mixed
          */
-        public static function config( $file_name )
+        public static function config( $file_name, $transform = FALSE )
         {
-            return include self::$dir . 'includes/Config/' . $file_name . '.php';
+            $data = include self::$dir . 'includes/Config/' . $file_name . '.php';
+            
+            if( $transform ){
+                switch ( $transform ) {
+                    case 'select_options':
+                        
+                        foreach( $data as $key => $val ){
+                            if( is_array($val) ) break;
+                            $data[ $key ] = array(
+                                'label' => $val,
+                                'value' => $val
+                                );
+                        }
+
+                        break;
+                    
+                }
+            }
+            
+            return $data;
         }
 
         /**

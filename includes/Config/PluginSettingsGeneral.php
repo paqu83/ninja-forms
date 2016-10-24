@@ -37,9 +37,24 @@ return apply_filters( 'ninja_forms_plugin_settings_general', array(
     'currency' => array(
         'id'      => 'currency',
         'type'    => 'select',
-        'options' => Ninja_Forms::config( 'Currency' ),
+        'options' => array_merge( array( array( 'label' => __( '-- Add custom currency --', 'ninja-forms' ), 'value' => 'add_custom_currency' ) ), Ninja_Forms::config( 'Currency' ) ),
         'label'   => __( 'Currency', 'ninja-forms' ),
         'value'   => 'USD'
+    ),
+    'currency_code' => array(
+        'id'        => 'currency_code',
+        'type'      => 'textbox',
+        'label'     => __( 'Define your own currency', 'ninja-forms' ),
+        'desc'      => __( 'Currency code e.g. USD', 'ninja-forms' ),
+        'maxlength' => "3",
+        'size'      => "3"
+    ),
+    'currency_symbol' => array(
+        'id'      => 'currency_symbol',
+        'type'    => 'select',
+        'options' => Ninja_Forms::config( 'CurrencySymbol', 'select_options'),
+        'label'   => '',
+        'desc'    => __( 'select the currency symbol', 'ninja-forms' )
     ),
 
 ));
